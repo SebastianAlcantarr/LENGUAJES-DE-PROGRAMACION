@@ -73,33 +73,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(define (init-env)
-  (extend-env 'imperio-romano (bool-val #f)(extend-env'satan (num-val 666)
-                                                      (empty-env))))
-
-
-(define (value-of-program prgm)
-  (match prgm
-    ((a-program expr)
-     (value-of expr (init-env)))
-    (else
-     (error "no programa "))))
-
-
-
-(define e1 (const-exp 10))
-(define e2 (const-exp 90))
-(define e3 (const-exp 90))
-(define e4 (const-exp 40))
-(define lista (cons-exp e1 (cons-exp e2 (empty-exp))))
-(define resta (diff-exp e3 e4 ))
-
-
-
-(provide
- (contract-out
-  (value-of-program (-> let-program? expval?))
-  (value-of (-> let-expression?  environment? expval?))))
-
 
  
