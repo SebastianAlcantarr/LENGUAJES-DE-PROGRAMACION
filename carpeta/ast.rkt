@@ -43,6 +43,21 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; --- Extension del lenguaje con LIST --
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(struct cons-exp let-expression (car cdr) #:transparent)
+
+(struct null-exp let-expression (exp1) #:transparent)
+
+(struct cdr-exp let-expression (exp1) #:transparent)
+
+(struct car-exp let-expression (exp1)#:transparent)
+
+(struct empty-exp let-expression () #:transparent)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; --- Extension del lenguaje LET--
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
 (struct minus-exp let-expression (exp1) #:transparent)
@@ -58,7 +73,15 @@
   (struct if-exp ((exp1 let-expression?) (exp2 let-expression?) (exp3 let-expression?)))
   (struct var-exp ((var let-expression?)))
   (struct let-exp ((var let-expression?) (exp1 let-expression?) (body let-expression?)))
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  
+  ;;;;;;;;;;;;;   --- LISTAS --- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (struct cons-exp ((car let-expression?)(cdr let-expression?)))
+  (struct null-exp ((exp1 let-expression?)))
+  (struct cdr-exp ((exp1 let-expression?)))
+  (struct car-exp ((exp1 let-expression?)))
+  (struct empty-exp ())
+  
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; --- Extension del lenguaje LET--
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
  (struct minus-exp ((exp1 let-expression?)))
