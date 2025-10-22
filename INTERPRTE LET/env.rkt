@@ -7,8 +7,6 @@
 
 (struct extend-env environment (var val parent) #:transparent)
 
-
-
 (define (apply-env env search-var)
   (if (empty-env? env)
       (error "No binding")
